@@ -20,5 +20,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Run the Maven verify phase
-      run: mvn --batch-mode --update-snapshots verify
+    - name: Build the Project
+      run: mvn clean install -DskipTests
+    - name: Coverage per Test Execution
+      run: mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test
