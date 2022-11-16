@@ -3,7 +3,7 @@ name: Java CI/CD workflow
 on: [push]
 
 jobs:
-  build:
+  Test:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,12 +13,12 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package
+      - name: Test project
+        run: mvn test
 
-  deploy:
+  Publish:
     runs-on: ubuntu-18.04
-    needs: build
+    needs: Test
     steps:
     - uses: actions/checkout@v2
     - name: Docker build
