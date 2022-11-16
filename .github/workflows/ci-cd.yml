@@ -21,9 +21,6 @@ jobs:
     needs: build
     steps:
     - uses: actions/checkout@v2
-      with:
-          name: jar-artifact
-          path: target/
     - name: Docker build
       run: |
         docker build . -t yassinesayadi/pe-backend:latest
